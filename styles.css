@@ -1,0 +1,51 @@
+/* Paleta Teletón: Morado y Amarillo */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #4b0082; /* Morado oscuro */
+    color: white;
+}
+
+header {
+    background-color: #3a0066; /* Morado profundo */
+    color: #ffeb3b; /* Amarillo vibrante */
+    padding: 20px;
+    text-align: center;
+}
+
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas fijas */
+    gap: 20px;
+    padding: 40px;
+}
+
+.tarjeta {
+    text-decoration: none;
+    color: #3a003d; /* Texto morado muy oscuro */
+    background-color: #fff9c4; /* Amarillo muy claro */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(255, 255, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tarjeta:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(255, 255, 0, 0.4);
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.tarjeta:hover img {
+    transform: scale(1.05);       /* Zoom leve */
+    filter: brightness(1.1);      /* Brillo suave */
+}
