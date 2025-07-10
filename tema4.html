@@ -1,42 +1,141 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Hidroterapia</title>
-    <link rel="stylesheet" href="estilo-hidro.css">
+  <meta charset="UTF-8">
+  <title>Hidroterapia</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #4b0082, #2e005c);
+      color: white;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 30px;
+      gap: 30px;
+    }
+
+    .lateral {
+      background-color: white;
+      color: black;
+      padding: 20px;
+      width: 250px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .lateral ul {
+      padding-left: 20px;
+    }
+
+    .lateral a {
+      color: #b40000;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .lateral a:hover {
+      text-decoration: underline;
+    }
+
+    .contenido {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      min-width: 300px;
+    }
+
+    .bloque {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .video {
+      position: relative;
+      width: 320px;
+      height: 180px;
+      background-color: #000;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .video::before {
+      content: "";
+      position: absolute;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/7/75/YouTube_social_white_squircle.svg') no-repeat center;
+      background-size: 50px;
+      width: 100%;
+      height: 100%;
+      opacity: 0.5;
+    }
+
+    .bloque h2 {
+      max-width: 500px;
+      font-size: 18px;
+      font-weight: normal;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <aside class="lateral">
-            <p><strong>Opción lateral donde se despliegue la siguiente información:</strong></p>
-            <p>Da clic en los enlaces para descargar nuestro contenido adicional:</p>
-            <ul>
-                <li><a href="#">Pictogramas Hidroterapia</a></li>
-                <li><a href="#">Actividades de juego para casa</a></li>
-                <li><a href="#">Etc</a></li>
-                <li><a href="#">Etc</a></li>
-                <li><a href="#">Etc</a></li>
-                <li><a href="#">Etc</a></li>
-            </ul>
-        </aside>
 
-        <main class="contenido">
-            <div class="bloque">
-                <div class="imagen-contenedor">
-                    <img src="img/hidro1.jpg" alt="Hidroterapia 1">
-                    <div class="icono-repro">&#9658;</div>
-                </div>
-                <h2>“Como anticipar a mi hijo para tomar el servicio de Hidroterapia”</h2>
-            </div>
+  <div class="container">
 
-            <div class="bloque">
-                <div class="imagen-contenedor">
-                    <img src="img/hidro2.jpg" alt="Hidroterapia 2">
-                    <div class="icono-repro">&#9658;</div>
-                </div>
-                <h2>“Actividades de juego en casa”</h2>
-            </div>
-        </main>
-    </div>
+    <aside class="lateral">
+      <p>Da clic en los enlaces para descargar nuestro contenido adicional:</p>
+      <ul>
+        <li><a href="#">Pictogramas Hidroterapia</a></li>
+        <li><a href="#">Actividades de juego para casa</a></li>
+        <li><a href="#">Etc</a></li>
+        <li><a href="#">Etc</a></li>
+        <li><a href="#">Etc</a></li>
+        <li><a href="#">Etc</a></li>
+      </ul>
+    </aside>
+
+    <main class="contenido">
+
+      <div class="bloque">
+        <div class="video" data-id="aR3srs8YGT0"></div>
+        <h2>“Como anticipar a mi hijo para tomar el servicio de Hidroterapia”</h2>
+      </div>
+
+      <div class="bloque">
+        <div class="video" data-id="aR3srs8YGT0"></div> <!-- ← Reemplaza este ID por tu segundo video -->
+        <h2>“Actividades de juego en casa”</h2>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    document.querySelectorAll('.video').forEach(el => {
+      const videoId = el.dataset.id;
+      el.style.backgroundImage = `url('https://img.youtube.com/vi/${videoId}/0.jpg')`;
+
+      el.addEventListener('click', () => {
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        iframe.width = "100%";
+        iframe.height = "100%";
+        iframe.frameBorder = "0";
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.allowFullscreen = true;
+
+        el.innerHTML = "";
+        el.appendChild(iframe);
+      });
+    });
+  </script>
+
 </body>
 </html>
